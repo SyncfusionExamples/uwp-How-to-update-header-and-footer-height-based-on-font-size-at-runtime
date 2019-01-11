@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SfListViewSample" Padding="10"
+             xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="SfListViewSample.MainPage">
+   
+    <ContentPage.BindingContext>
+        <local:ContactsViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+            <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Text="MODIFY HEADER FOOTER FONTSIZE" BackgroundColor="SlateBlue" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center"
+                    Command="{Binding ResizeHeaderFooterCommand}" CommandParameter="{x:Reference listView}"/>
+            <syncfusion:SfListView x:Name="listView" SelectionMode="None" AutoFitMode="Height"
+                                   Grid.Row="1" ItemSpacing="2" IsStickyFooter="True" IsStickyHeader="True"
+                                   ItemsSource="{Binding contactsinfo}">
+                
+                <syncfusion:SfListView.HeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="LightGray">
+                                <Label Text="Contact Details" TextColor="Black" HorizontalOptions="Center"
+                                       FontSize="{Binding BindingContext.FontSize, Source={x:Reference listView}}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.HeaderTemplate>
+                <syncfusion:SfListView.FooterTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid BackgroundColor="LightGray" ColumnSpacing="2">
+                                <Label Text="{Binding contactsinfo.Count}" HorizontalOptions="Start" TextColor="Black" Grid.Column="1" FontSize="{Binding BindingContext.FontSize, Source={x:Reference listView}}"/>
+                                <Label Grid.Column="0" HorizontalOptions="End" Text="Contacts Count" TextColor="Black" FontSize="{Binding BindingContext.FontSize, Source={x:Reference listView}}"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.FooterTemplate>
+                <syncfusion:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid x:Name="grid" RowSpacing="1" BackgroundColor="#F5EFEF">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="1" />
+                                    </Grid.RowDefinitions>
+                                    <Grid RowSpacing="0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="1"
+                                              RowSpacing="1"
+                                              Padding="10,0,0,0"
+                                            VerticalOptions="Center">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <Label LineBreakMode="WordWrap" 
+                                                   TextColor="#474747" 
+                                                   Text="{Binding ContactName}">
+                                            </Label>
+                                            <Label Grid.Row="1" 
+                             Grid.Column="0"
+                             TextColor="#474747"
+                             LineBreakMode="NoWrap"
+                             Text="{Binding ContactNumber}">
+
+                                            </Label>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </syncfusion:SfListView.ItemTemplate>
+    
+            </syncfusion:SfListView>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
