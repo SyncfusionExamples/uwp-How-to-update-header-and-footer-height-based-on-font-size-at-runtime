@@ -5,6 +5,8 @@ This example demonstrates how to update header and footer height based on font s
 
 ListView allows you to resize the header and footer item size based on the change in font size of the label element at runtime by calling [RefreshListViewItem](https://help.syncfusion.com/cr/cref_files/xamarin/Syncfusion.SfListView.XForms~Syncfusion.ListView.XForms.SfListView~RefreshListViewItem.html) method asynchronously when [SfListView.AutoFitMode](https://help.syncfusion.com/cr/cref_files/xamarin/Syncfusion.SfListView.XForms~Syncfusion.ListView.XForms.SfListView~AutoFitMode.html) is Height.
 
+You can refer [Syncfusion Xamarin.Forms ListView's item customization](https://help.syncfusion.com/xamarin/sflistview/item-size-customization#updating-the-header-and-footer-height-based-on-font-at-runtime) for more details.
+
 ```
 <ContentPage xmlns:syncfusion="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms">       
  <Grid>
