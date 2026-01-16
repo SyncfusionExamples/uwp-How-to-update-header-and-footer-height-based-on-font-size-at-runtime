@@ -1,5 +1,4 @@
-﻿
-using Syncfusion.ListView.XForms;
+﻿using Syncfusion.ListView.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,7 +21,7 @@ namespace SfListViewSample
         private double MaxTablet = 100;
         private double MinTablet = 30;
         private double _fontSize;
-        SfListView list;
+
         public double FontSize
         {
             get { return _fontSize; }
@@ -38,6 +37,7 @@ namespace SfListViewSample
 
         public ContactsViewModel()
         {
+            FontSize = (Device.Idiom == TargetIdiom.Phone) ? MinPhone : MinTablet;
             contactsinfo = new ObservableCollection<Contacts>();
             ResizeHeaderFooterCommand = new Command(ResizeHeaderFooter);
             Random r = new Random();
@@ -48,9 +48,8 @@ namespace SfListViewSample
             }
         }
 
-        private void ResizeHeaderFooter(object obj)
+        private void ResizeHeaderFooter()
         {
-            list = obj as SfListView;
             var maxFont = Device.Idiom == TargetIdiom.Phone ? MaxPhone : MaxTablet;
             var minFont = (Device.Idiom == TargetIdiom.Phone) ? MinPhone : MinTablet;
             if (FontSize >= maxFont)
@@ -61,7 +60,6 @@ namespace SfListViewSample
             {
                 FontSize += 10;
             }
-            list.RefreshListViewItem(-1, -1, true);
         }
 
         #endregion

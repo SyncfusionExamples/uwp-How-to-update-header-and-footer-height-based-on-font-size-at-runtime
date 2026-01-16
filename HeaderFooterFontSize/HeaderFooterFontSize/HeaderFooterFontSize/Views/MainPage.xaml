@@ -16,8 +16,8 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Button Text="MODIFY HEADER FOOTER FONTSIZE" BackgroundColor="SlateBlue" TextColor="White"  VerticalOptions="Center" HorizontalOptions="Center"
-                    Command="{Binding ResizeHeaderFooterCommand}" CommandParameter="{x:Reference listView}"/>
-            <syncfusion:SfListView x:Name="listView" SelectionMode="None" AutoFitMode="Height"
+                    Command="{Binding ResizeHeaderFooterCommand}"/>
+            <syncfusion:SfListView x:Name="listView" SelectionMode="None" AutoFitMode="DynamicHeight"
                                    Grid.Row="1" ItemSpacing="2" IsStickyFooter="True" IsStickyHeader="True"
                                    ItemsSource="{Binding contactsinfo}">
                 
